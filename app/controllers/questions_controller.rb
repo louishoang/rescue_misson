@@ -20,11 +20,14 @@ class QuestionsController < ApplicationController
     else
       render action: 'new'
     end
+
   end
 
   # GET /questions/1
   def show
     @question = Question.find(params[:id])
+    @answers = Answer.order(updated_at: :desc)
+    @answer = Answer.new
   end
 
   private
@@ -32,3 +35,22 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:title, :description)
   end
 end
+
+class AnswersController < ApplicationController
+  def create
+    @question = Question.find(params[:question_id])
+    @answer = Answer.new(answer_params)
+    if @answer.save
+      flash[:notice] = "New answer added successfully."
+      redirect_to @question
+    else
+      render @question
+    end
+  end
+
+  private
+  def answer_params
+    params.require(:answer).permit(:description)
+  end
+end
+

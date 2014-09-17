@@ -3,5 +3,17 @@
   <li>Title: <%= @question.title %></li>
 
   <li>Description: <%= @question.description %></li>
-
 </ul>
+
+
+<div id="display_answer">
+
+</div>
+
+
+<div id="post_answer">
+  <%= form_for [@question, @answer] , html: {class: "nifty_form"} do |f| %>
+    <label>Description: </label><br><%= f.text_area :description, size: "60x12" %><br>
+    <%= f.submit "Create" %>
+  <% end %>
+</div>
