@@ -1,14 +1,39 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>RescueMission</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meetups</title>
+  <link rel="stylesheet" href="/stylesheets/normalize.css" />
+  <link rel="stylesheet" href="/stylesheets/app.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/validation.js" type="text/javascript"></script>
+  <script src="/js/app.js" type="text/javascript"></script>
 </head>
 <body>
 
-<%= yield %>
+<div class="top-bar">
+  <div class="container">
+    <a class="logo" href="/">Question</a>||
+    <a class="new" href="/new">New</a>
+
+
+
+
+  </div>
+</div>
+
+<% if flash.any? %>
+  <div class="flash">
+    <div class="container">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% end %>
+
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
