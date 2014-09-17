@@ -2,7 +2,7 @@ require 'pry'
 class QuestionsController < ApplicationController
   # GET /questions
   def index
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc)
     render "questions/index"
   end
 
@@ -14,18 +14,10 @@ class QuestionsController < ApplicationController
   # POST /questions
   def create
     @question = Question.new(question_params)
-
     if @question.save
       flash[:notice] = "New question added successfully."
       redirect_to @question
     else
-      flash[:notice] = "please check input"
-      if @question.errors[:title]
-        flash[:notice] = "Title " + @question.errors[:title][0]
-      elsif @question.errors[:description]
-        flash[:notice] = "Description" + @question.errors[:description][0]
-      end
-
       render action: 'new'
     end
   end
@@ -39,5 +31,4 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :description)
   end
-
 end

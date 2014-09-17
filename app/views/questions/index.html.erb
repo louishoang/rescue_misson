@@ -1,6 +1,8 @@
 <h2> Rescuse Mission </h2>
 <ul>
   <% @questions.each do |question| %>
-    <li><%= question.title %></li>
+    <li>
+      <%= link_to question.title, question_path(question) %>
+    </li>
   <% end %>
 </ul>
