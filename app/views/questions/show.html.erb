@@ -7,7 +7,9 @@
 
 
 <div id="display_answer">
-
+  <% @answers.each do |answer| %>
+    <%= answer.description %>
+  <% end %>
 </div>
 
 
