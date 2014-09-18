@@ -30,6 +30,26 @@ class QuestionsController < ApplicationController
     @answers = Answer.order(updated_at: :desc)
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+  @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    binding.pry
+    @question.destroy
+    redirect_to "questions/index"
+  end
+
   private
   def question_params
     params.require(:question).permit(:title, :description)

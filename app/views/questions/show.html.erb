@@ -19,3 +19,8 @@
     <%= f.submit "Create" %>
   <% end %>
 </div>
+
+<div id="option">
+  <%= link_to 'edit', edit_question_path %>
+  <%= link_to 'delete', question_path(@question), method: :destroy %>
+</div>

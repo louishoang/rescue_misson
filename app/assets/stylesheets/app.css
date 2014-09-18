@@ -1,13 +1,12 @@
 
 body {
-  background-image: url('/images/stardust.png');
-  color: #FFFFFF;
+  background-image: url('images/stardust.png');
+  color: black;
 }
 
 a,
 a:visited {
-  color: #FFFFFF;
-  text-decoration: none;
+  color: black;
 }
 
 .container {
